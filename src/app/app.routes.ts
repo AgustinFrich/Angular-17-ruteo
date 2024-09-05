@@ -1,7 +1,12 @@
 import { Routes } from '@angular/router';
 
 import { ErrorComponent } from './components/error/error.component';
-import BienvenidaComponent from './components/bienvenida/bienvenida.component';
+
+import {
+  canActivate,
+  redirectUnauthorizedTo,
+  redirectLoggedInTo,
+} from '@angular/fire/auth-guard';
 
 export const routes: Routes = [
   {
@@ -10,7 +15,9 @@ export const routes: Routes = [
   },
   {
     path: 'login',
+    children: [],
     loadComponent: () => import('./components/login/login.component'),
+    ...canActivate(() => redirectLoggedInTo(['/bienvenida'])),
   },
   {
     path: 'community',
@@ -18,6 +25,7 @@ export const routes: Routes = [
       import('./components/community/community.component').then(
         (m) => m.CommunityComponent
       ),
+    ...canActivate(() => redirectUnauthorizedTo(['/login'])),
   },
   {
     path: '',

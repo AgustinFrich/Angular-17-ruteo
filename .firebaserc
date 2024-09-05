@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "ejemplo-firestore-2024": {
+      "hosting": {
+        "ruteo": [
+          "ejemplo-firestore-2024"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "ejemplo-firestore-2024"
+  }
+}

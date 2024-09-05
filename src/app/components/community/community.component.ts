@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-community',
@@ -8,4 +9,10 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './community.component.html',
   styleUrl: './community.component.scss',
 })
-export class CommunityComponent {}
+export class CommunityComponent {
+  authS = inject(AuthService);
+
+  logOut() {
+    this.authS.logout();
+  }
+}

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Usuario } from './classes/usuario';
+import { AuthService } from './services/auth.service';
 import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
@@ -9,5 +11,7 @@ import { RouterLink, RouterOutlet } from '@angular/router';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  title = 'ruteo';
+  constructor(private authS: AuthService) {
+    //   authS.register('agustinfrich@gmail.com', '123456');
+  }
 }
